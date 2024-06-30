@@ -46,16 +46,14 @@ export default function Navigation() {
                   <div className="dropdown-menu" aria-labelledby="dropdownId">
                     {sectionNames &&
                       sectionNames?.map((item) => (
-                        <a className="dropdown-item" href={`/${item}`}>
+                        <a
+                          key={item}
+                          className="dropdown-item"
+                          href={`/${item}`}
+                        >
                           {`${item?.charAt(0).toUpperCase()}${item?.slice(1)}`}
                         </a>
                       ))}
-                    {/* <a className="dropdown-item" href="#">
-                      Action 1
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Action 2
-                    </a> */}
                   </div>
                 </li>
                 <li className="nav-item dropdown">
