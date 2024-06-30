@@ -5,12 +5,12 @@ interface ContainerProps {
 }
 
 export function ContainerFluid({ children }: ContainerProps) {
-  return <div className="container-fluid mt-3">{children}</div>;
+  return <div className="container-fluid">{children}</div>;
 }
 
 export function ContainerCentered({ children }: ContainerProps) {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 p-3">
+    <div className="d-flex justify-content-center align-items-center p-3">
       {children}
     </div>
   );
