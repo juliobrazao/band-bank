@@ -1,7 +1,7 @@
 import * as y from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useMusician } from "../hooks/useMusician";
+import { useCreateMusician } from "../hooks/useMusician";
 import { instruments } from "../models/instruments";
 
 const MusicianSchema = y.object({
@@ -21,10 +21,10 @@ export default function MusicianForm() {
     resolver: yupResolver(MusicianSchema),
   });
 
-  const { mutateAsync } = useMusician();
+  const { mutateAsync: saveMusician } = useCreateMusician();
 
   const handleSubmitForm = (musician: MusicianType) => {
-    mutateAsync(musician);
+    saveMusician(musician);
     reset();
   };
 
@@ -58,8 +58,8 @@ export default function MusicianForm() {
             id="musician_instrument"
           >
             <option value="">Select</option>
-            {instruments.map((instrument) => (
-              <option value={instrument}>{`${instrument
+            {instruments.map((instrument, index) => (
+              <option key={index} value={instrument}>{`${instrument
                 .charAt(0)
                 .toUpperCase()}${instrument.slice(1)}`}</option>
             ))}
