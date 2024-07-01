@@ -34,6 +34,28 @@ export function useReadMusicians() {
   };
 }
 
+export function useUpdateMusicians() {
+  const queryClient = useQueryClient();
+
+  const {} = useMutation({
+    mutationKey: ["update-musician"],
+    mutationFn: async ({
+      musicianId,
+      musician,
+    }: {
+      musicianId: string;
+      musician: Partial<Musician>;
+    }) => {
+      return MusicianService.update(musicianId, musician);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["read-musicians"],
+      });
+    },
+  });
+}
+
 export function useDeleteMusician() {
   const queryClient = useQueryClient();
 

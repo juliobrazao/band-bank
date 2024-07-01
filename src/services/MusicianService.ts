@@ -12,6 +12,12 @@ export class MusicianService {
     return axios.get(ENDPOINT).then((response) => response.data);
   }
 
+  static async update(musicianId: string, musician: Partial<Musician>) {
+    return axios
+      .patch(`${ENDPOINT}/${musicianId}`, musician)
+      .then((response) => response.data);
+  }
+
   static async delete(musicianId: string) {
     return axios
       .delete(`${ENDPOINT}/${musicianId}`)
