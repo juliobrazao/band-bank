@@ -5,8 +5,8 @@ import { useMusician } from "../hooks/useMusician";
 import { instruments } from "../models/instruments";
 
 const MusicianSchema = y.object({
-  name: y.string().min(5),
-  instrument: y.string().min(3),
+  name: y.string().min(5, "Musician name must have at least 5 characters"),
+  instrument: y.string().min(1, "Instrument must be set"),
 });
 
 export type MusicianType = y.InferType<typeof MusicianSchema>;
