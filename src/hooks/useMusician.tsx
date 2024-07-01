@@ -1,9 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { MusicianService } from "../services/MusicianService";
 import { Musician } from "../models/musician";
+import { useContext } from "react";
+import { DialogContext } from "../contexts/DialogContext";
 
 export function useCreateMusician() {
   const queryClient = useQueryClient();
+  const { handleToggleDialog } = useContext(DialogContext);
 
   const { mutateAsync } = useMutation({
     mutationKey: ["create-musician"],
@@ -14,6 +17,7 @@ export function useCreateMusician() {
       queryClient.invalidateQueries({
         queryKey: ["read-musicians"],
       });
+      () => handleToggleDialog;
     },
   });
 

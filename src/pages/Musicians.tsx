@@ -1,12 +1,13 @@
-import { ContainerCentered } from "../components/Containers";
+import { ContainerFluid } from "../components/Containers";
+import Dialog from "../components/Dialog";
 import MusicianCreate from "../components/MusicianCreate";
 import MusiciansTable from "../components/MusiciansTable";
 
 export default function Musicians() {
   return (
-    <ContainerCentered>
-      <MusicianCreate />
+    <ContainerFluid>
       <MusiciansTable />
-    </ContainerCentered>
+      <Dialog title="Add Musician" content={<MusicianCreate />} />
+    </ContainerFluid>
   );
 }

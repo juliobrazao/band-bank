@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useCreateMusician } from "../hooks/useMusician";
 import { instruments } from "../models/instruments";
+import { Floppy2Fill } from "react-bootstrap-icons";
 
 const MusicianSchema = y.object({
   name: y.string().min(5, "Musician name must have at least 5 characters"),
@@ -11,7 +12,7 @@ const MusicianSchema = y.object({
 
 export type MusicianType = y.InferType<typeof MusicianSchema>;
 
-export default function MusicianForm() {
+export default function MusicianCreate() {
   const {
     register,
     handleSubmit,
@@ -31,7 +32,7 @@ export default function MusicianForm() {
   return (
     <>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
-        <div className="mt-3">
+        <div>
           <label htmlFor="musician_name" className="form-label">
             Name
           </label>
@@ -74,7 +75,8 @@ export default function MusicianForm() {
 
         <div className="mt-3">
           <button type="submit" className="btn btn-primary w-100">
-            Save Member
+            Save Member &nbsp;
+            <Floppy2Fill />
           </button>
         </div>
       </form>

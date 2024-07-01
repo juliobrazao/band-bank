@@ -5,7 +5,7 @@ interface ContainerProps {
 }
 
 export function ContainerFluid({ children }: ContainerProps) {
-  return <div className="container-fluid">{children}</div>;
+  return <div className="container-fluid mt-3">{children}</div>;
 }
 
 export function ContainerCentered({ children }: ContainerProps) {
