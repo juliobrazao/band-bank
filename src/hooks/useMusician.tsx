@@ -22,6 +22,20 @@ export function useCreateMusician() {
   };
 }
 
+export function useReadMusician(musicianId: string) {
+  const { data, isLoading } = useQuery({
+    queryKey: ["read-musician"],
+    queryFn: () => {
+      return MusicianService.readOne(musicianId);
+    },
+  });
+
+  return {
+    data,
+    isLoading,
+  };
+}
+
 export function useReadMusicians() {
   const { data, isLoading } = useQuery({
     queryKey: ["read-musicians"],

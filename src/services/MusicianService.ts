@@ -12,6 +12,12 @@ export class MusicianService {
     return axios.get(ENDPOINT).then((response) => response.data);
   }
 
+  static async readOne(musicianId: string) {
+    return axios
+      .get(`${ENDPOINT}/${musicianId}`)
+      .then((response) => response.data);
+  }
+
   static async update(musicianId: string, musician: Partial<Musician>) {
     return axios
       .patch(`${ENDPOINT}/${musicianId}`, musician)
