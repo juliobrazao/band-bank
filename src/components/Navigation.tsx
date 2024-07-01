@@ -8,7 +8,7 @@ export default function Navigation() {
     <>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             Band Bank
           </a>
           <button
@@ -26,12 +26,6 @@ export default function Navigation() {
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">&nbsp;</ul>
             <form className="d-flex my-2 my-lg-0">
               <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#" aria-current="page">
-                    Home
-                    <span className="visually-hidden">(current)</span>
-                  </a>
-                </li>
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
@@ -45,15 +39,19 @@ export default function Navigation() {
                   </a>
                   <div className="dropdown-menu" aria-labelledby="dropdownId">
                     {sectionNames &&
-                      sectionNames?.map((item) => (
-                        <a
-                          key={item}
-                          className="dropdown-item"
-                          href={`/${item}`}
-                        >
-                          {`${item?.charAt(0).toUpperCase()}${item?.slice(1)}`}
-                        </a>
-                      ))}
+                      sectionNames
+                        ?.filter((item) => item !== "home")
+                        .map((item) => (
+                          <a
+                            key={item}
+                            className="dropdown-item"
+                            href={`/${item}`}
+                          >
+                            {`${item?.charAt(0).toUpperCase()}${item?.slice(
+                              1
+                            )}`}
+                          </a>
+                        ))}
                   </div>
                 </li>
                 <li className="nav-item dropdown">
